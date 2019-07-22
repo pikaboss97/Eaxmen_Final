@@ -7,8 +7,8 @@ const app = express();
 
 
 //connecting to db
-mongoose.connect('mongodb://localhost/examen-final').then(db => console.log('Db connected')).catch(err => console.log(err));
-
+mongoose.connect('mongodb+srv://diego:diego@cluster0-rbl2m.mongodb.net/test').then(db => console.log('Db connected')).catch(err => console.log(err));
+//mongodb://localhost/examen-final
 //import routes
 const indexRoutes = require('./routes/index');
 

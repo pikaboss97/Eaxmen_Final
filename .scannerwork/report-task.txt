@@ -1,0 +1,7 @@
+organization=diego097
+projectKey=diego097_Eaxmen_Final
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.27355
+dashboardUrl=https://sonarcloud.io/dashboard?id=diego097_Eaxmen_Final
+ceTaskId=AWwbvoE8zCW7bkCw4Oz0
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AWwbvoE8zCW7bkCw4Oz0
