@@ -1,0 +1,77 @@
+<% include partials/_header %>
+<!--
+<pre>
+    <%= expedientes %>
+</pre>
+-->
+<div class="container">
+    <div class="row">
+        <!--FORM-->
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="nombre" placeholder="Your Name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="grado" placeholder="Grado" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="articulos" placeholder="N° Articulos" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="libros" placeholder="N° Libros" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="proyectos" placeholder="N° Proyectos" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="asesorado" placeholder="Asesorados" class="form-control">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            Add
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--List-->
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                       <th>Nombre</th>
+                       <th>Grado</th>
+                       <th>N° de Articulos</th>
+                       <th>N° Libros</th>
+                       <th>N° Proyectos</th>
+                       <th>N° de Asesorados</th> 
+                       <th>Categoría</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i = 0; i < expedientes.length; i++) { %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= expedientes[i].nombre %></td>
+                            <td><%= expedientes[i].grado %></td>
+                            <td><%= expedientes[i].articulos %></td>
+                            <td><%= expedientes[i].libros %></td>
+                            <td><%= expedientes[i].proyectos %></td>
+                            <td><%= expedientes[i].asesorado %></td>
+                            <td>
+                                <a href="/calificar/<%= expedientes[i]._id %> " class="btn btn-info">calificar</a>
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<% include partials/_footer %>
