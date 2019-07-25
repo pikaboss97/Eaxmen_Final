@@ -1,10 +1,13 @@
+//var fn = {};
 const express = require('express');
 const router = express.Router();
 const Expediente = require('../models/expediente');
 
+const calificar = require('calificar');
+const op = require('./op');
 
-router.get('/', async (req,res) =>{
-    
+router.get('/', async (req, res) => {
+
     const expedientes = await Expediente.find();
     console.log(expedientes);
     res.render('index', {
@@ -22,22 +25,16 @@ router.post('/add', async (req, res) => {
     res.redirect('/');
 })
 
-router.get('/calificar/:id', async (req,res) => {
-    const{ id } = req.params;
+router.get('/calificar/:id', async (req, res) => {
+    const { id } = req.params;
     const exp = await Expediente.findById(id);
-    if(exp.grado ==='titulo profesional' && exp.articulos > 3 && libros > 0 && proyectos >1 && asesorado>0){
-        res.send('Entras en la categoría de Nivel 1');
-    }if(exp.grado ==='doctor' && exp.articulos > 6 && exp.libros > 1 & exp.proyectos > 1 && exp.asesorado> 2){
-        res.send('Entras en la categoría de Nivel 2');
-    }if(exp.grado ==='maestro' && exp.articulos > 6 && exp.libros > 1 & exp.proyectos > 1 && exp.asesorado> 2){
-        res.send('Entras en la categoría de Nivel 2');
-    }if(exp.grado ==='maestro' && exp.articulos > 10 && exp.libros > 2 & exp.proyectos > 2 && exp.asesorado> 4){
-        res.send('Entras en la categoría de Nivel 3');
-    }if(exp.grado ==='doctor' && exp.articulos > 10 && exp.libros > 2 & exp.proyectos > 2 && exp.asesorado> 4){
-        res.send('Entras en la categoría de Nivel 3');
-    }else{
-        res.send('No se te puede categorizar');
-    }
     
+    //calificar.categorizar(exp.grado,exp.articulos,exp.libros,exp.proyectos,exp.asesorado,res);
+    var cat = op.calificar(exp.grado,exp.articulos,exp.libros,exp.proyectos,exp.asesorado);
+    console.log(cat);
+    res.send(cat);
+   
+
 })
 module.exports = router;
+//module.exports = fn;
